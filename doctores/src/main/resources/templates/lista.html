@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Doctores</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        table { width: 100%; max-width: 1200px; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #48814d; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        a { margin-right: 5px; }
+        .btn { padding: 6px 12px; text-decoration: none; border-radius: 4px; color: white; }
+        .btn-green { background-color: #48814d; }
+        .btn-blue { background-color: #416a8c; }
+        .btn-red { background-color: #aa5c57; }
+    </style>
+</head>
+<body>
+<h1>Lista de Doctores</h1>
+<a class="btn btn-green" th:href="@{/doctores/nuevo}">+ Agregar Doctor</a>
+<br><br>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Especialidad</th>
+        <th>Teléfono</th>
+        <th>Correo</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="doctor : ${doctores}">
+        <td th:text="${doctor.id}"></td>
+        <td th:text="${doctor.nombre}"></td>
+        <td th:text="${doctor.especialidad}"></td>
+        <td th:text="${doctor.telefono}"></td>
+        <td th:text="${doctor.correo}"></td>
+        <td>
+            <a class="btn btn-blue" th:href="@{/doctores/editar/{id}(id=${doctor.id})}">Editar</a>
+            <a class="btn btn-red" th:href="@{/doctores/eliminar/{id}(id=${doctor.id})}">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

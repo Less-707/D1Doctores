@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Doctor</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        input { width: 100%; padding: 8px; margin: 6px 0 16px 0; box-sizing: border-box; }
+        .btn { padding: 8px 16px; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; }
+        .btn-blue { background-color: #747A9AFF; }
+        .btn-gray { background-color: #9E9E9E; }
+    </style>
+</head>
+<body>
+<h1>Editar Doctor</h1>
+<form action="/doctores/actualizar" method="post" th:object="${doctor}">
+    <input type="hidden" th:field="*{id}"/>
+
+    <label>Nombre:</label>
+    <input type="text" th:field="*{nombre}" required/>
+
+    <label>Especialidad:</label>
+    <input type="text" th:field="*{especialidad}" required/>
+
+    <label>Teléfono:</label>
+    <input type="text" th:field="*{telefono}"/>
+
+    <label>Correo:</label>
+    <input type="email" th:field="*{correo}"/>
+
+    <button class="btn btn-blue" type="submit">Actualizar</button>
+    <a class="btn btn-gray" th:href="@{/doctores}">Cancelar</a>
+</form>
+</body>
+</html>
